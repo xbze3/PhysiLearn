@@ -4,6 +4,7 @@
     overflow-y: auto;
     overflow-x: hidden;
     -ms-overflow-style: none;
+    border-radius: 0px;
 }
 
 #assignment-list-group::-webkit-scrollbar {
@@ -16,8 +17,4 @@
 
 #assignment-item:hover {
     cursor: pointer;
-}
-
-#assignment-list-group {
-    border-radius: 0px;
 }
