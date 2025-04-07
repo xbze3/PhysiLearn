@@ -10,6 +10,14 @@
     display: none;
 }
 
-.assignment-item:hover {
+#assignment-item {
+    border-radius: 0px;
+}
+
+#assignment-item:hover {
     cursor: pointer;
+}
+
+#assignment-list-group {
+    border-radius: 0px;
 }

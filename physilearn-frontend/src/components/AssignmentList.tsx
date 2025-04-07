@@ -7,7 +7,8 @@ function AssignmentList() {
         <ListGroup as="ul" id="assignment-list-group">
             <ListGroup.Item
                 as="li"
-                className="d-flex justify-content-between align-items-start assignment-item"
+                className="d-flex justify-content-between align-items-start"
+                id="assignment-item"
             >
                 <div className="ms-2 me-auto">
                     <div className="fw-bold">Assignment #1</div>
