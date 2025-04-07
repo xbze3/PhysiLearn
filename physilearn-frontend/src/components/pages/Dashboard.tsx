@@ -1,11 +1,18 @@
 import NavBar from "../NavBar";
-import Footer from "../Footer";
+import AssignmentList from "../AssignmentList";
+import AssignmentInfo from "../AssignmentInfo";
+// import Footer from "../Footer";
+import "../../components-css/page-css/Dashboard.css";
 
 function Dashboard() {
     return (
         <>
             <NavBar />
-            <Footer />
+            <section id="dashboard-split-section">
+                <AssignmentList />
+                <AssignmentInfo />
+            </section>
+            {/* <Footer /> */}
         </>
     );
 }
