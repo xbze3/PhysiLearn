@@ -1,4 +1,5 @@
 import "../components-css/AssignmentInfo.css";
+import Button from "react-bootstrap/Button";
 
 function AssignmentInfo() {
     return (
@@ -7,14 +8,55 @@ function AssignmentInfo() {
                 <h1>CSE 2201 - Internet Computing I</h1>
                 <h1>Assignment #1</h1>
 
-                <p>Open: April 10th</p>
-                <p>Due: April 14th</p>
+                <div id="open-and-due-div">
+                    <p>
+                        <strong>Open:</strong> April 10th
+                    </p>
+                    <p>
+                        <strong>Due:</strong> April 14th
+                    </p>
+                </div>
 
-                <h1>Submission Status</h1>
+                <div id="submission-status-div">
+                    <h1>Submission Status</h1>
 
-                <p>Submission Status: No submissions have been made yet</p>
-                <p>Grading Status: Not yet graded</p>
-                <p>Time remaining: 4 days</p>
+                    <table>
+                        <tr>
+                            <td>
+                                <strong>Submission Status:</strong>
+                            </td>
+                            <td>No submissions have been made yet</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <strong>Grading Status:</strong>
+                            </td>
+                            <td>Not yet graded</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <strong>Time remaining:</strong>
+                            </td>
+                            <td>4 days</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <strong>Last Modified:</strong>
+                            </td>
+                            <td>-</td>
+                        </tr>
+                        {/* <tr>
+                            <td>
+                                <strong>Submission Comments:</strong>
+                            </td>
+                            <td>-</td>
+                        </tr> */}
+                    </table>
+                </div>
+
+                <Button variant="primary" id="add-submisson-button">
+                    Add Submission
+                </Button>
             </div>
         </div>
     );
