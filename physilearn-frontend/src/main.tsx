@@ -5,6 +5,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 
 import CoursePage from "./components/pages/CoursePage.tsx";
+import InsCoursePage from "./components/instructor-components/instructor-pages/InsCoursePage.tsx";
+import InsMyCourses from "./components/instructor-components/instructor-pages/InsMyCourse.tsx";
 import MyCourses from "./components/pages/MyCourses.tsx";
 import Dashboard from "./components/pages/Dashboard.tsx";
 import App from "./App.tsx";
@@ -25,6 +27,14 @@ const router = createBrowserRouter([
     {
         path: "/course-page",
         element: <CoursePage />,
+    },
+    {
+        path: "/ins-course-page",
+        element: <InsCoursePage />,
+    },
+    {
+        path: "/ins-courses",
+        element: <InsMyCourses />,
     },
 ]);
 

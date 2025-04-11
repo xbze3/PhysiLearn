@@ -1,0 +1,59 @@
+.course-page-container {
+    padding: 1.5rem;
+}
+
+.course-title {
+    font-size: 2rem;
+    color: #1e3a8a;
+}
+
+.course-description {
+    font-size: 1.1rem;
+    color: #555;
+}
+
+.course-instructor {
+    font-style: italic;
+    margin-bottom: 2rem;
+}
+
+.course-sections {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.course-column {
+    flex: 1;
+    min-width: 300px;
+    max-width: 500px;
+}
+
+.scrollable-section {
+    max-height: 300px;
+    overflow-y: auto;
+    border: 1px solid #e0e0e0;
+    border-radius: 0.5rem;
+}
+
+button {
+    font-weight: 500;
+    margin-top: -20px;
+}
+
+.scrollable-section {
+    max-height: 300px;
+    overflow-y: auto;
+    border: 1px solid #e0e0e0;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    background-color: #fff;
+}
+
+#ins-upload-button {
+    margin-top: 10px;
+}
+
+#ins-post-button {
+    margin-top: 10px;
+}

@@ -11,7 +11,7 @@ function Courses() {
             <div className="cards-wrapper">
                 <Card
                     className="card-fixed-height"
-                    onClick={() => navigate("/course-page")}
+                    onClick={() => navigate("/ins-course-page")}
                 >
                     <Card.Img
                         variant="top"

@@ -7,7 +7,6 @@ function MyCourses() {
         <>
             <NavBar />
             <Courses />
-            {/* <Footer /> */}
         </>
     );
 }
