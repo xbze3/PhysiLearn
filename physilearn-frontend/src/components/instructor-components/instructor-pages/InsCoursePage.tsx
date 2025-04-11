@@ -62,7 +62,7 @@ function InsCoursePage() {
                 <div className="course-sections">
                     <div className="course-column">
                         <div className="d-flex justify-content-between align-items-center mb-2">
-                            <h4>📢 Announcements</h4>
+                            <h4>Announcements</h4>
                             <Button
                                 variant="primary"
                                 size="sm"
@@ -113,7 +113,7 @@ function InsCoursePage() {
 
                     <div className="course-column">
                         <div className="d-flex justify-content-between align-items-center mb-2">
-                            <h4>📝 Assignments</h4>
+                            <h4>Assignments</h4>
                             <Button
                                 variant="primary"
                                 size="sm"

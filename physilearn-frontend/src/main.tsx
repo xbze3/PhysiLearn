@@ -7,6 +7,7 @@ import "./index.css";
 import CoursePage from "./components/pages/CoursePage.tsx";
 import InsCoursePage from "./components/instructor-components/instructor-pages/InsCoursePage.tsx";
 import InsMyCourses from "./components/instructor-components/instructor-pages/InsMyCourse.tsx";
+import Submissions from "./components/instructor-components/instructor-pages/Submissions.tsx";
 import MyCourses from "./components/pages/MyCourses.tsx";
 import Dashboard from "./components/pages/Dashboard.tsx";
 import App from "./App.tsx";
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
     {
         path: "/ins-courses",
         element: <InsMyCourses />,
+    },
+    {
+        path: "/submissions",
+        element: <Submissions />,
     },
 ]);
 

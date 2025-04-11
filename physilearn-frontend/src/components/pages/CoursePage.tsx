@@ -59,7 +59,7 @@ function CoursePage() {
 
                 <div className="course-sections">
                     <div className="course-column">
-                        <h4>📢 Announcements</h4>
+                        <h4>Announcements</h4>
                         <ListGroup className="scrollable-section">
                             {dummyAnnouncements.map((ann) => (
                                 <ListGroup.Item key={ann.id}>
@@ -72,7 +72,7 @@ function CoursePage() {
                     </div>
 
                     <div className="course-column">
-                        <h4>📝 Assignments</h4>
+                        <h4>Assignments</h4>
                         <ListGroup className="scrollable-section">
                             {dummyAssignments.map((assn) => (
                                 <ListGroup.Item
