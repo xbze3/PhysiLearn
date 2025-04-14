@@ -1,9 +1,9 @@
-import "../components-css/Courses.css";
+import "../../components-css/Courses.css";
 import Card from "react-bootstrap/Card";
 import { useNavigate } from "react-router-dom";
-import Default_Class_LOGO from "../assets/default-class-logo.png";
+import Default_Class_LOGO from "../../assets/default-class-logo.png";
 
-function Courses() {
+function InsCourses() {
     const navigate = useNavigate();
 
     return (
@@ -28,4 +28,4 @@ function Courses() {
     );
 }
 
-export default Courses;
+export default InsCourses;
