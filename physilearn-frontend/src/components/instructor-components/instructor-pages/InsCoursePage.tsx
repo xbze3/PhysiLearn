@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import NavBar from "../Ins-NavBar";
 import Container from "react-bootstrap/Container";
 import ListGroup from "react-bootstrap/ListGroup";
 import Badge from "react-bootstrap/Badge";
@@ -8,6 +7,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Collapse from "react-bootstrap/Collapse";
 import "../../../components-css/page-css/InsCoursePage.css";
+import InsNavBar from "../Ins-NavBar";
 
 const dummyCourse = {
     title: "CSE 2201 - Internet Computing I",
@@ -43,7 +43,7 @@ function InsCoursePage() {
 
     return (
         <>
-            <NavBar />
+            <InsNavBar />
             <Container className="course-page-container mt-4">
                 <Button
                     variant="outline-secondary"

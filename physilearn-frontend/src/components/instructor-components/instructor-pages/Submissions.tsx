@@ -3,8 +3,8 @@ import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import ListGroup from "react-bootstrap/ListGroup";
 import Badge from "react-bootstrap/Badge";
-import NavBar from "../Ins-NavBar";
 import "../../../components-css/page-css/Submissions.css";
+import InsNavBar from "../Ins-NavBar";
 
 type Class = {
     id: string;
@@ -60,7 +60,7 @@ function Submissions() {
 
     return (
         <>
-            <NavBar />
+            <InsNavBar />
             <Container className="submissions-page-container mt-4">
                 <h2>Submissions Dashboard</h2>
                 <p className="text-muted">
