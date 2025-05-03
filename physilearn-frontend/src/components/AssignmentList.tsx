@@ -19,18 +19,18 @@ function AssignmentList() {
     const [assignments, setAssignments] = useState<Assignments[]>([]);
     const { setSelectedAssignmentId } = useAssignment();
 
-    const handleAssignmentRender = async () => {
-        try {
-            const response = await axios.get(
-                "http://localhost:8081/api/assignments"
-            );
-            setAssignments(response.data);
-        } catch (err) {
-            console.log(`Problem retrieving assignments: ${err}`);
-        }
-    };
-
     useEffect(() => {
+        const handleAssignmentRender = async () => {
+            try {
+                const response = await axios.get(
+                    "http://localhost:8081/api/assignments"
+                );
+                setAssignments(response.data);
+            } catch (err) {
+                console.log(`Problem retrieving assignments: ${err}`);
+            }
+        };
+
         handleAssignmentRender();
     }, []);
 

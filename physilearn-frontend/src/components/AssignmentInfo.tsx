@@ -20,20 +20,20 @@ function AssignmentInfo() {
 
     const { selectedAssignmentId } = useAssignment();
 
-    const renderAssignmentInfo = async () => {
-        if (!selectedAssignmentId) return;
-
-        try {
-            const response = await axios.get(
-                `http://localhost:8081/api/assignments/${selectedAssignmentId}`
-            );
-            setSelectedAssignmentInfo(response.data);
-        } catch (err) {
-            console.log(`Error rendering assignment information: ${err}`);
-        }
-    };
-
     useEffect(() => {
+        const renderAssignmentInfo = async () => {
+            if (!selectedAssignmentId) return;
+
+            try {
+                const response = await axios.get(
+                    `http://localhost:8081/api/assignments/${selectedAssignmentId}`
+                );
+                setSelectedAssignmentInfo(response.data);
+            } catch (err) {
+                console.log(`Error rendering assignment information: ${err}`);
+            }
+        };
+
         renderAssignmentInfo();
     }, [selectedAssignmentId]);
 
