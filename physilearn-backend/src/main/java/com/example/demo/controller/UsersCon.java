@@ -1,65 +1,83 @@
 package com.example.demo.controller;
+
 import com.example.demo.model.Users;
 import com.example.demo.repository.UsersRepo;
+import com.example.demo.response.AuthResponse;
+import com.example.demo.securityconfig.JwtProvider;
+import com.example.demo.service.UserService;
+import com.example.demo.service.UserServiceImplementation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
-import java.util.List;
+
 import java.util.Optional;
 
-
 @RestController
-@RequestMapping("/api/users")
+@RequestMapping("/auth")
 public class UsersCon {
 
     @Autowired
     private UsersRepo usersRepo;
 
-    // CREATE
-    @PostMapping
-    public Users createUser(@RequestBody Users user) {
-        System.out.println(">> [POST] Creating user: " + user);
-        Users saved = usersRepo.save(user);
-        System.out.println(">> [POST] Saved user: " + saved);
-        return saved;
-    }
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
-    // READ ALL
-    @GetMapping
-    public List<Users> getAllUsers() {
-        System.out.println(">> [GET] Fetching all users");
-        List<Users> users = usersRepo.findAll();
-        System.out.println(">> [GET] Found " + users.size() + " users");
-        return users;
-    }
+    //@Autowired
+    //private UserDetailsService userService;
 
-    // READ ONE BY ID
-    @GetMapping("/{id}")
-    public Users getUserById(@PathVariable String id) {
-        System.out.println(">> [GET] Fetching user with ID: " + id);
-        Optional<Users> user = usersRepo.findById(id);
-        if (user.isPresent()) {
-            System.out.println(">> [GET] Found user: " + user.get());
-        } else {
-            System.out.println(">> [GET] User not found for ID: " + id);
+    @Autowired
+    private UserServiceImplementation userService;
+
+    // SIGNUP
+    @PostMapping("/registration")
+    public ResponseEntity<AuthResponse> registerUser(@RequestBody Users user) {
+        Optional<Users> existingUser = usersRepo.findByEmail(user.getEmail());
+        if (existingUser.isPresent()) {
+            return new ResponseEntity<>(new AuthResponse(false, "Email is already in use", null), HttpStatus.BAD_REQUEST);
         }
-        return user.orElse(null);
+
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        Users savedUser = usersRepo.save(user);
+
+        Authentication authentication = new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPassword());
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+        String token = JwtProvider.generateToken(authentication);
+
+        AuthResponse response = new AuthResponse(true, "Register Success", token);
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    // UPDATE
-    @PutMapping("/{id}")
-    public Users updateUser(@PathVariable String id, @RequestBody Users updatedUser) {
-        System.out.println(">> [PUT] Updating user with ID: " + id);
-        updatedUser.setId(id);
-        Users saved = usersRepo.save(updatedUser);
-        System.out.println(">> [PUT] Updated user: " + saved);
-        return saved;
+    // SIGNIN
+    @PostMapping("/login")
+    public ResponseEntity<AuthResponse> loginUser(@RequestBody Users users) {
+        String email = users.getEmail();
+        String password = users.getPassword();
+
+        Authentication authentication = authenticate(email, password);
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+
+        String token = JwtProvider.generateToken(authentication);
+        AuthResponse response = new AuthResponse(true, "Login Success", token);
+
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    // DELETE
-    @DeleteMapping("/{id}")
-    public void deleteUser(@PathVariable String id) {
-        System.out.println(">> [DELETE] Deleting user with ID: " + id);
-        usersRepo.deleteById(id);
-        System.out.println(">> [DELETE] Deleted user with ID: " + id);
+    // AUTHENTICATION HELPER
+    private Authentication authenticate(String email, String password) {
+        UserDetails userDetails = userService.loadUserByUsername(email);
+
+        if (userDetails == null || !passwordEncoder.matches(password, userDetails.getPassword())) {
+            throw new BadCredentialsException("Invalid email or password");
+        }
+
+        return new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
     }
 }
