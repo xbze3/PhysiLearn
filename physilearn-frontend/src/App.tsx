@@ -1,6 +1,6 @@
 import "./App.css";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { Routes, Route } from 'react-router-dom';
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Routes, Route } from "react-router-dom";
 import CoursePage from "./components/pages/CoursePage";
 import Dashboard from "./components/pages/Dashboard";
 import MyCourses from "./components/pages/MyCourses";
@@ -23,8 +23,6 @@ function App() {
             <Route path="/insmycourse" element={<InsMyCourse />} />
             <Route path="/submisions" element={<Submissions />} />
         </Routes>
-
-        
     );
 }
 
