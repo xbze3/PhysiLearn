@@ -15,13 +15,13 @@ function App() {
         <Routes>
             <Route path="/login" element={<Login />} />
             <Route path="/" element={<Login />} />
-            <Route path="/Registration" element={<Registration />} />
+            <Route path="/registration" element={<Registration />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/coursepage" element={<CoursePage />} />
             <Route path="/courses" element={<MyCourses />} />
-            <Route path="/inscoursepage" element={<InsCoursePage />} />
-            <Route path="/insmycourse" element={<InsMyCourse />} />
-            <Route path="/submisions" element={<Submissions />} />
+            <Route path="/ins-course-page" element={<InsCoursePage />} />
+            <Route path="/ins-courses" element={<InsMyCourse />} />
+            <Route path="/submissions" element={<Submissions />} />
         </Routes>
     );
 }
