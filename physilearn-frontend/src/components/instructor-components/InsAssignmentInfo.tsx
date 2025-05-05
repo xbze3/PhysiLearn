@@ -1,5 +1,6 @@
+import "../../components-css/AssignmentInfo.css";
 import Button from "react-bootstrap/Button";
-import { useAssignment } from "./context/AssignmentContext";
+import { useAssignment } from "../context/AssignmentContext";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
@@ -13,7 +14,7 @@ interface Assignments {
     dateAssigned: string;
 }
 
-function AssignmentInfo() {
+function InsAssignmentInfo() {
     const [selectedAssignmentInfo, setSelectedAssignmentInfo] =
         useState<Assignments | null>(null);
 
@@ -110,4 +111,4 @@ function AssignmentInfo() {
     );
 }
 
-export default AssignmentInfo;
+export default InsAssignmentInfo;

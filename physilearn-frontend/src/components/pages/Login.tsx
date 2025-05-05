@@ -1,16 +1,17 @@
 import React, { useState, ChangeEvent } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import {
-    MDBContainer,
-    MDBInput,
-} from 'mdb-react-ui-kit';
+
 
 const Login: React.FC = () => {
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const [error, setError] = useState<string>('');
     const navigate = useNavigate();
+
+    const handleGoogleLogin = () => {
+        window.location.href = "http://localhost:8081/oauth2/authorization/google";
+      };
 
     const handleLogin = async () => {
         if (!email || !password) {
@@ -43,44 +44,58 @@ const Login: React.FC = () => {
 
     return (
         <div className="d-flex justify-content-center align-items-center vh-100">
-            <div className="border rounded-lg p-4" style={{ width: '500px', height: 'auto' }}>
-                <MDBContainer className="p-3">
+            <div className="border rounded p-4 bg-light" style={{ width: '500px' }}>
+                <div className="container p-3">
                     <h2 className="mb-4 text-center">Login Page</h2>
-
-                    <MDBInput
-                        wrapperClass='mb-4'
-                        placeholder='Email address'
-                        id='email'
-                        type='email'
-                        value={email}
-                        onChange={handleChange(setEmail)}
-                    />
-                    <MDBInput
-                        wrapperClass='mb-4'
-                        placeholder='Password'
-                        id='password'
-                        type='password'
-                        value={password}
-                        onChange={handleChange(setPassword)}
-                    />
-
+    
+                    <div className="mb-3">
+                        <input
+                            className="form-control"
+                            placeholder="Email address"
+                            id="email"
+                            type="email"
+                            value={email}
+                            onChange={handleChange(setEmail)}
+                        />
+                    </div>
+    
+                    <div className="mb-3">
+                        <input
+                            className="form-control"
+                            placeholder="Password"
+                            id="password"
+                            type="password"
+                            value={password}
+                            onChange={handleChange(setPassword)}
+                        />
+                    </div>
+    
                     {error && <p className="text-danger">{error}</p>}
-
+    
                     <button
-                        className="mb-4 d-block btn-primary"
-                        style={{ height: '50px', width: '100%' }}
+                        className="btn btn-primary mb-3 w-100"
+                        style={{ height: '50px', marginTop: '10px' }}
                         onClick={handleLogin}
                     >
                         Sign in
                     </button>
-
+    
+                    <button
+                        className="btn btn-danger mb-3 w-100"
+                        style={{ height: '50px', marginTop: '5px' }}
+                        onClick={handleGoogleLogin}
+                    >
+                        Google Sign-in
+                    </button>
+    
                     <div className="text-center">
                         <p>Not a member? <a href="/registration">Register</a></p>
                     </div>
-                </MDBContainer>
+                </div>
             </div>
         </div>
     );
+    
 };
 
 export default Login;
