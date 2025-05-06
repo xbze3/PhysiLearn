@@ -6,6 +6,7 @@ import "../../../components-css/page-css/Dashboard.css";
 import { AssignmentProvider } from "../../context/AssignmentContext";
 
 function InsDashboard() {
+    
     return (
         <>
             <NavBar />

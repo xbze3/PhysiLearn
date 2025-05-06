@@ -24,9 +24,13 @@ const Login: React.FC = () => {
                 email,
                 password
             });
+            const token = response.data.jwt;
+            localStorage.setItem("token", token);
+              
 
             console.log('Login successful:', response.data);
-            navigate('/dashboard');
+            console.log(token);
+            navigate('/insdashboard');
         } catch (err: unknown) {
             if (axios.isAxiosError(err)) {
                 console.error('Login failed:', err.response?.data || err.message);

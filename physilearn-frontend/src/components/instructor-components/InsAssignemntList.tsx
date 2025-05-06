@@ -19,21 +19,28 @@ interface Assignments {
 function InsAssignmentList() {
     const [assignments, setAssignments] = useState<Assignments[]>([]);
     const { setSelectedAssignmentId } = useAssignment();
+    const token = localStorage.getItem("token");
 
     useEffect(() => {
         const handleAssignmentRender = async () => {
             try {
                 const response = await axios.get(
-                    "http://localhost:8081/api/assignments"
+                    "http://localhost:8081/api/assignments",
+                    {
+                        headers: {
+                            Authorization: `Bearer ${token}`,
+                        },
+                    }
                 );
                 setAssignments(response.data);
             } catch (err) {
                 console.log(`Problem retrieving assignments: ${err}`);
             }
         };
-
+    
         handleAssignmentRender();
-    }, []);
+    }, [token]); // Include token in dependency array
+    
 
     return (
         <>

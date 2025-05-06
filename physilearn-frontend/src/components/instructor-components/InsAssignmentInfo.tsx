@@ -19,23 +19,32 @@ function InsAssignmentInfo() {
         useState<Assignments | null>(null);
 
     const { selectedAssignmentId } = useAssignment();
+    const token = localStorage.getItem("token");
 
     useEffect(() => {
+        const token = localStorage.getItem("token");
+    
         const renderAssignmentInfo = async () => {
-            if (!selectedAssignmentId) return;
-
+            if (!selectedAssignmentId || !token) return;
+    
             try {
                 const response = await axios.get(
-                    `http://localhost:8081/api/assignments/${selectedAssignmentId}`
+                    `http://localhost:8081/api/assignments/${selectedAssignmentId}`,
+                    {
+                        headers: {
+                            Authorization: `Bearer ${token}`,
+                        },
+                    }
                 );
                 setSelectedAssignmentInfo(response.data);
             } catch (err) {
                 console.log(`Error rendering assignment information: ${err}`);
             }
         };
-
+    
         renderAssignmentInfo();
-    }, [selectedAssignmentId]);
+    }, [selectedAssignmentId, token]);
+    
 
     if (!selectedAssignmentInfo) {
         return (
