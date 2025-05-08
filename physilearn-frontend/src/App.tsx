@@ -9,6 +9,8 @@ import Registration from "./components/pages/Registration";
 import InsCoursePage from "./components/instructor-components/instructor-pages/InsCoursePage";
 import InsMyCourse from "./components/instructor-components/instructor-pages/InsMyCourse";
 import Submissions from "./components/instructor-components/instructor-pages/Submissions";
+import InsDashboard from "./components/instructor-components/instructor-pages/InsDashboard";
+import AddAssignment from "./components/instructor-components/AddAssignment";
 
 function App() {
     return (
