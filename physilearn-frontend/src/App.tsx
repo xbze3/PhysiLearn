@@ -1,5 +1,6 @@
 import "./App.css";
-import { Routes, Route } from 'react-router-dom';
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Routes, Route } from "react-router-dom";
 import CoursePage from "./components/pages/CoursePage";
 import Dashboard from "./components/pages/Dashboard";
 import MyCourses from "./components/pages/MyCourses";
@@ -16,18 +17,14 @@ function App() {
         <Routes>
             <Route path="/login" element={<Login />} />
             <Route path="/" element={<Login />} />
-            <Route path="/Registration" element={<Registration />} />
+            <Route path="/registration" element={<Registration />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/coursepage" element={<CoursePage />} />
             <Route path="/courses" element={<MyCourses />} />
-            <Route path="/inscoursepage" element={<InsCoursePage />} />
-            <Route path="/insmycourse" element={<InsMyCourse />} />
-            <Route path="/submisions" element={<Submissions />} />
-            <Route path="/insdashboard" element={<InsDashboard />} />
-            <Route path="/addassignment" element={<AddAssignment />} />
+            <Route path="/ins-course-page" element={<InsCoursePage />} />
+            <Route path="/ins-courses" element={<InsMyCourse />} />
+            <Route path="/submissions" element={<Submissions />} />
         </Routes>
-
-        
     );
 }
 
